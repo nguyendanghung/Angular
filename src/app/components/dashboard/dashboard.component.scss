@@ -1,0 +1,9 @@
+.top-hero {
+  padding: 5px 8px;
+  background: burlywood;
+  margin: 5px;
+  cursor: pointer;
+  &.active {
+    background-color: cadetblue;
+  }
+}
