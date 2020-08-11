@@ -17,7 +17,10 @@ export class HeroDetailComponent implements OnInit {
   constructor(private route:ActivatedRoute, private heroService: HeroService, private location: Location) { }
 
   ngOnInit(): void {
-    this.getHero()
+    this.getHero();
+    console.log('====================================');
+    console.log(this.hero);
+    console.log('====================================');
   }
 
   getHero(): void {
