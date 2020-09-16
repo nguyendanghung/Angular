@@ -1,7 +1,7 @@
+import { Hero } from './../../interface/hero';
 import { MesService } from './../../services/mes.service';
-import { HeroService } from './../../services/hero.service';
+import { HeroService } from '../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import {Hero} from "../../interface/hero";
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -17,12 +17,30 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
-    console.log(this.heroes);
     
   }
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes)
+    console.log(this.heroes);
+
+  }
+
+  addHero(name: string):void {
+    if (!name) {
+      return;
+    }
+    name = name.trim()
+    this.heroService.addHero({name} as Hero).subscribe(hero => this.heroes.push(hero))
+  }
+
+  deleteHero(hero: any): void {
+    this.heroes = this.heroes.filter(h => h !== hero)
+    this.heroService.deleteHero(hero).subscribe((res: any) => {
+      if (res == true) {
+        
+      }
+    })
   }
 
 }

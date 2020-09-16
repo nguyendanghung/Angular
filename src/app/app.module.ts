@@ -10,13 +10,19 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {HttpClientModule} from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { ListUsersComponent } from './components/list-users/list-users.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { HeroSearchComponent } from './components/hero-search/hero-search.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
     MesComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListUsersComponent,
+    UserDetailComponent,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
