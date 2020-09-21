@@ -1,3 +1,5 @@
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { ListUsersComponent } from './components/list-users/list-users.component';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
@@ -8,7 +10,9 @@ const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'heroes', component: HeroesComponent},
-  {path: 'detail/:id', component: HeroDetailComponent}
+  {path: 'detail/:id', component: HeroDetailComponent},
+  {path: 'users', component: ListUsersComponent},
+  {path: 'user-detail/:id', component: UserDetailComponent}
 
 ];
 

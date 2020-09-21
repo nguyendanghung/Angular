@@ -1,19 +1,18 @@
+import { User } from './../interface/user';
 import { Hero } from './../interface/hero';
-import { HEROES } from '../heroData';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {MesService} from "./mes.service"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class HeroService {
+export class ApiService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   private heroesUrl = 'api/heroes'
-  private userUrl = 'http://reqres.in/api'
+  private Url = 'https://5f68184c38ce870016398abf.mockapi.io'
   constructor(private mesService: MesService, private http: HttpClient) { }
 
 
@@ -40,24 +39,24 @@ export class HeroService {
     return this.http.delete<Hero>(url)
   }
 
-  getUsers(pageNumber: number) {
-    const url = `${this.userUrl}/users?page=${pageNumber}`
+  getUsers() {
+    const url = `${this.Url}/users`
     return this.http.get(url)
   }
 
   getUser(id: number) {
-    const url = `${this.userUrl}/users/${id}`
+    const url = `${this.Url}/users/${id}`
     return this.http.get(url)
   }
 
-  searchHeros(text: string): Observable<Hero[]> {
-    const url = `${this.userUrl}/?name=${text}`
-    if (!text.trim()) {
-      return of([])
-    }
-    return this.http.get<Hero[]>(url).pipe(
-      tap(x => x.length ? this.log(`matching ${text}`) : this.log( `no matching ${text}`))
-    )
+  addUser(user: User) {
+    const url = `${this.Url}/users/`
+    return this.http.post(url, user)
+  }
+
+  deleteUser(id: number) {
+    const url = `${this.Url}/users/${id}`
+    return this.http.delete(url)
   }
 
   private log(mes: string) {

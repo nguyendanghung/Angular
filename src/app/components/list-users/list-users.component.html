@@ -1,8 +1,8 @@
-<p>list-users works!</p>
+<p>list-users page</p>
 
-<div *ngFor="let user of users">
-  <img a-ng src="{{user.avatar}}" alt="">
-  <span>Email: {{user.email}}</span>
-  <span>First name: {{user.first_name}}</span>
-  <span>First name: {{user.last_name}}</span>
+<input type="text" placeholder="add new user" #inputAddUser>
+<div *ngFor="let user of users" routerLink="/user-detail/{{user.id}}">
+  <img [src]="user.avatar" alt="">
+  <p>Name: {{user.name}}</p>
+  <button (click)="deleteUser($event, user.id)">Delete</button>
 </div>

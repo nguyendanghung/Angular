@@ -1,6 +1,6 @@
 import { Hero } from './../../interface/hero';
 import { MesService } from './../../services/mes.service';
-import { HeroService } from '../../services/api.service';
+import { ApiService } from '../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-heroes',
@@ -13,7 +13,7 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   
   
-  constructor(private heroService: HeroService, private mesService: MesService) { }
+  constructor(private apiService: ApiService, private mesService: MesService) { }
 
   ngOnInit(): void {
     this.getHeroes();
@@ -21,7 +21,7 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes)
+    this.apiService.getHeroes().subscribe(heroes => this.heroes = heroes)
     console.log(this.heroes);
 
   }
@@ -31,12 +31,12 @@ export class HeroesComponent implements OnInit {
       return;
     }
     name = name.trim()
-    this.heroService.addHero({name} as Hero).subscribe(hero => this.heroes.push(hero))
+    this.apiService.addHero({name} as Hero).subscribe(hero => this.heroes.push(hero))
   }
 
   deleteHero(hero: any): void {
     this.heroes = this.heroes.filter(h => h !== hero)
-    this.heroService.deleteHero(hero).subscribe((res: any) => {
+    this.apiService.deleteHero(hero).subscribe((res: any) => {
       if (res == true) {
         
       }

@@ -1,5 +1,4 @@
-import { HeroService } from './../../services/api.service';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from './../../services/api.service';
 import { User } from './../../interface/user';
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -9,21 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListUsersComponent implements OnInit {
 
-  constructor(private apiService: HeroService) { }
+  constructor(private apiService: ApiService) { }
 
-  users: User[];
-  pageNumber: number = 1;
+  users: User[];  
 
   ngOnInit(): void {
     this.getListUsers();
   }
 
   getListUsers(): void {
-    this.apiService.getUsers(this.pageNumber).subscribe((res: any) => {
-      this.users = res['data'];
-      console.log(res);
-
+    this.apiService.getUsers().subscribe((res: any) => {
+      this.users = res;
+    }, (err) => {
+      console.log(err);
     })
+  }
+
+  addNewUser(): void {
+    
+  }
+
+  deleteUser($event, id: number): void {
+    $event.stopPropagation();
+    this.apiService.deleteUser(id).subscribe((res: any) => {
+      if(res) {
+        this.getListUsers();
+      }
+    });
   }
 
 }

@@ -2,8 +2,8 @@
 
 
 <div *ngIf="user">
-  <!-- <img a-ng src="{{user.avatar}}" alt=""> -->
-  <span>Email: {{user.email}}</span>
-  <span>First name: {{user.first_name}}</span>
-  <span>First name: {{user.last_name}}</span>
+  <img [src]="user.avatar" alt="">
+  <p>Name: {{user.name}}</p>
+  <p>Create: {{user.createdAt}}</p>
+  <p>Detail: {{user.detail}}</p>
 </div>

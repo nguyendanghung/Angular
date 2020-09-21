@@ -1,7 +1,6 @@
-<h3>Top heroes</h3>
+<h3>Get 5 User top</h3>
+<div *ngFor="let user of users">
+  <img [src]="user.avatar" alt="lol">
+  <p>{{user.name}}</p>
 
-<span class="top-hero" routerLink="/detail/{{hero.id}}" *ngFor="let hero of heroes">{{hero.name}}</span>
-
-<app-list-users></app-list-users>
-<app-user-detail></app-user-detail>
-<app-hero-search></app-hero-search>
+</div>
