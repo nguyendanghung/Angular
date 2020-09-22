@@ -2,6 +2,7 @@ import { ApiService } from './../../services/api.service';
 import { User } from './../../interface/user';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,8 +12,21 @@ import { ActivatedRoute } from '@angular/router';
 export class UserDetailComponent implements OnInit {
 
   user: User;
+  isEdit: boolean = false;
 
-  constructor(private apiService: ApiService, private route:ActivatedRoute) { }
+  userDetailForm = this.fb.group({
+    name: ['', 
+    [Validators.required]
+  ],
+    detail: ['',
+    [Validators.required, Validators.maxLength(50)]
+  ],
+
+  })
+
+  constructor(private apiService: ApiService, private route:ActivatedRoute, private fb: FormBuilder) { 
+
+  }
 
   ngOnInit(): void {
     this.getUser()
@@ -27,6 +41,16 @@ export class UserDetailComponent implements OnInit {
       }
     }, (error) => {
       console.log(error);
+    })
+  }
+
+  updateUser(id: number): void {
+    console.warn(this.userDetailForm.value);
+    this.apiService.updateUser(this.userDetailForm.value, id).subscribe((res: any) => {
+      if(res) {
+        this.user = res;
+        this.getUser()
+      }
     })
   }
 

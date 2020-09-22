@@ -1,30 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './components/heroes/heroes.component';
-import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
-import { MesComponent } from './components/mes/mes.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { UserItemComponent } from './components/user-item/user-item.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MesComponent,
     DashboardComponent,
     ListUsersComponent,
     UserDetailComponent,
+    UserItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

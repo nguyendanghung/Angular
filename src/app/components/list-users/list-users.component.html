@@ -1,8 +1,22 @@
 <p>list-users page</p>
 
-<input type="text" placeholder="add new user" #inputAddUser>
-<div *ngFor="let user of users" routerLink="/user-detail/{{user.id}}">
-  <img [src]="user.avatar" alt="">
-  <p>Name: {{user.name}}</p>
-  <button (click)="deleteUser($event, user.id)">Delete</button>
+<form [formGroup]="formAddUser" (ngSubmit)="addNewUser()">
+  <input type="text" placeholder="add name" formControlName="name">
+  <input type="text" placeholder="add details" formControlName="detail">
+  <button type="submit">Submit Add</button>
+</form>
+
+<div class="list-user">
+  <div *ngFor="let user of users" class="item-user">
+    <app-user-item [user]="user" (delete)="deleteUser($event)"></app-user-item>
+  </div>
 </div>
+
+<!-- <div class="list-user">
+  <div *ngFor="let user of users" routerLink="/user-detail/{{user.id}}" class="item-user">
+    <img [src]="user.avatar" alt="">
+    <p>{{user.id}}. {{user.name}}</p>
+    <button (click)="deleteUser($event, user.id)">Delete</button>
+  </div>
+</div> -->
+

@@ -1,0 +1,9 @@
+.list-user {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .item-user {
+    width: 25%;
+    margin-bottom: 20px;
+  }
+}

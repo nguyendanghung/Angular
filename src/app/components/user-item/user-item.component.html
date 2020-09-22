@@ -1,0 +1,7 @@
+<div routerLink="/user-detail/{{user.id}}" class="item-user">
+  <img [src]="user.avatar" alt="">
+  <p>{{user.id}}. {{user.name}}</p>
+  <!-- <button (click)="deleteUser($event, user.id)">Delete</button> -->
+  <button (click)="deleteUser($event, user.id)">Delete</button>
+
+</div>
