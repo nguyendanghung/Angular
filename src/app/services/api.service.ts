@@ -9,7 +9,8 @@ export class ApiService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private Url = 'https://5f68184c38ce870016398abf.mockapi.io'
+  private Url = 'https://5f68184c38ce870016398abf.mockapi.io';
+  // private apiLogin = ''
   constructor(private http: HttpClient) { }
 
 

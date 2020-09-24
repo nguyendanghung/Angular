@@ -49,4 +49,9 @@ export class ListUsersComponent implements OnInit {
     });
   }
 
+  showInterval(interval: number) {
+    console.log(interval);
+    
+  }
+
 }

@@ -8,7 +8,7 @@
 
 <div class="list-user">
   <div *ngFor="let user of users" class="item-user">
-    <app-user-item [user]="user" (delete)="deleteUser($event)"></app-user-item>
+    <app-user-item [user]="user" (delete)="deleteUser($event)" (intervalFire)="showInterval($event)"></app-user-item>
   </div>
 </div>
 
